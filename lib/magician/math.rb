@@ -115,6 +115,15 @@ module Math
     terms.first length
   end
 
+  def harmonics length
+    return nil if length < 0
+    terms = []
+    1.upto(length).each do |i|
+      terms << 1/length.to_f
+    end
+    terms
+  end
+
   # Finds all prime numbers from 1 to a given number n (inclusive) using the
   # Sieve of Eratosthenes.
   #
