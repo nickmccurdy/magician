@@ -1,3 +1,5 @@
+require 'cmath'
+
 # Magician's extensions to the Math module.
 module Math
 
@@ -16,9 +18,11 @@ module Math
   def quadratic(a, b, c)
     return nil if a.zero?
     left = -b
-    right = Math.sqrt(b**2 - 4*a*c)
+    right = CMath.sqrt(b**2 - 4*a*c)
     bottom = 2*a
-    [ (left+right)/bottom, (left-right)/bottom ].sort
+    results = [ (left+right)/bottom, (left-right)/bottom ]
+    complex_number_in_results = results.first.class <= Complex or results.last.class <= Complex
+    complex_number_in_results ? results : results.sort
   end
 
   # The number of size k ordered subsets of a set of size n. Equivalent to
