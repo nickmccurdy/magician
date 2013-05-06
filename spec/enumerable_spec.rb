@@ -85,6 +85,12 @@ describe Enumerable do
     [1, 2, 2, 5].occurences.should == { 1=>1, 2=>2, 5=>1 }
   end
 
+  it 'should calculate its length' do
+    [].length.should      == 0
+
+    [1, 2].length.should  == 2
+  end
+
   it 'should determine if it is empty' do
     [].empty?.should      be_true
 

@@ -123,6 +123,14 @@ module Enumerable
     occurences
   end
 
+  # Gets the number of elements in the Enumerable. This works by converting the
+  # Enumerable to an array and then getting its length.
+  #
+  # @return [Fixnum] the length of the Enumerable
+  def length
+    to_a.length
+  end
+
   # Returns true if the Enumerable contains no elements. This works by
   # converting the Enumerable to an array and then checking if that is empty.
   #
