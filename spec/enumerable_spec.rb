@@ -85,6 +85,12 @@ describe Enumerable do
     [1, 2, 2, 5].occurences.should == { 1=>1, 2=>2, 5=>1 }
   end
 
+  it 'should determine if it is empty' do
+    [].empty?.should      be_true
+
+    [1, 2].empty?.should  be_false
+  end
+
   it 'should let Enumerable#average be used as an alias to Enumerable#mean' do
     [4].average.should == 4.0
   end

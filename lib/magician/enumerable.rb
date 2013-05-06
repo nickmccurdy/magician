@@ -118,8 +118,17 @@ module Enumerable
   # original Enumerable
   def occurences
     occurences = Hash.new 0
+    # TODO each
     each { |item| occurences[item] += 1 }
     occurences
+  end
+
+  # Returns true if the Enumerable contains no elements. This works by
+  # converting the Enumerable to an array and then checking if that is empty.
+  #
+  # @return [Boolean] true if the Enumerable is empty
+  def empty?
+    to_a.empty?
   end
 
   # Alias average to mean.
