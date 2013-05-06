@@ -1,6 +1,6 @@
 require "#{File.dirname __FILE__}/spec_helper"
 
-describe Array do
+describe Enumerable do
 
   it 'should return all of its Numerics in order' do
     [1, 2.0, -3].numerics.should          == [1, 2.0, -3]
@@ -85,7 +85,7 @@ describe Array do
     [1, 2, 2, 5].occurences.should == { 1=>1, 2=>2, 5=>1 }
   end
 
-  it 'should let Array#average be used as an alias to Array#mean' do
+  it 'should let Enumerable#average be used as an alias to Enumerable#mean' do
     [4].average.should == 4.0
   end
 
