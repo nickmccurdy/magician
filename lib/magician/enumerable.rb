@@ -125,6 +125,23 @@ module Enumerable
     occurences
   end
 
+  # Returns true if the Enumerable is a palindrome (meaning it is the same
+  # forward and backward). This method relies on a working each_with_index
+  # method on the Enumerable. However, Enumerable objects that are instances of
+  # String or one of its subclasses will rely on the each_char method instead.
+  #
+  # @return [Boolean] true if the Enumerable is a palindrome
+  def palindrome?
+    array_of_enum = []
+    if self.class <= String
+      each_char { |item| array_of_enum << item }
+    else
+      each_with_index { |item| array_of_enum << item }
+    end
+
+    array_of_enum == array_of_enum.reverse
+  end
+
   # Gets the number of elements in the Enumerable. This works by converting the
   # Enumerable to an array and then getting its length.
   #

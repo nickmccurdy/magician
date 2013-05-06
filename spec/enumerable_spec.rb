@@ -2,6 +2,12 @@ require "#{File.dirname __FILE__}/spec_helper"
 
 describe Enumerable do
 
+  before :all do
+    class String
+      include Enumerable
+    end
+  end
+
   it 'should return all of its Numerics in order' do
     [1, 2.0, -3].numerics.should          == [1, 2.0, -3]
     ['string'].numerics.should            == []
@@ -118,6 +124,16 @@ describe Enumerable do
   it 'should let Enumerable#size be used as an alias to Enumerable#length' do
     [1, 2].size.should  == 2
     (1..10).size.should == 10
+  end
+
+  it 'should determine if it is a palindrome' do
+    ''.palindrome?.should        be_true
+    'a'.palindrome?.should       be_true
+    'deed'.palindrome?.should    be_true
+    'racecar'.palindrome?.should be_true
+
+    'cats'.palindrome?.should be_false
+    'no'.palindrome?.should   be_false
   end
 
 end
