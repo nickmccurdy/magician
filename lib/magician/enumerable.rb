@@ -144,6 +144,9 @@ module Enumerable
   # Alias average to mean.
   alias :average :mean
 
+  # Alias size to length.
+  alias :size :length
+
   private
 
   # Requires that all objects in the Enumerable are instances of Numeric (or one

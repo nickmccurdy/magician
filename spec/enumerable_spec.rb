@@ -115,4 +115,9 @@ describe Enumerable do
     (1..10).average.should == 5.5
   end
 
+  it 'should let Enumerable#size be used as an alias to Enumerable#length' do
+    [1, 2].size.should  == 2
+    (1..10).size.should == 10
+  end
+
 end
