@@ -2,12 +2,6 @@ require "#{File.dirname __FILE__}/spec_helper"
 
 describe Enumerable do
 
-  before :all do
-    class String
-      include Enumerable
-    end
-  end
-
   it 'should return all of its Numerics in order' do
     [1, 2.0, -3].numerics.should          == [1, 2.0, -3]
     ['string'].numerics.should            == []

@@ -178,3 +178,10 @@ module Enumerable
   end
 
 end
+
+# String objects do not properly inherit these new methods for Enumerable. As a
+# result, String needs to include Enumerable again for these methods to be used
+# on Strings.
+class String
+  include Enumerable
+end
