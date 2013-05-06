@@ -7,7 +7,7 @@ module Enumerable
   #
   # @return [Array] an array containing all of the Numerics from the Enumerable
   def numerics
-    select { |item| item.class <= Numeric }
+    select { |item| item.is_a? Numeric }
   end
 
   # Gets the sum of the Enumerable's elements. The sum of an empty Enumerable is
@@ -133,7 +133,7 @@ module Enumerable
   # @return [Boolean] true if the Enumerable is a palindrome
   def palindrome?
     array_of_enum = []
-    if self.class <= String
+    if is_a? String
       each_char { |item| array_of_enum << item }
     else
       each_with_index { |item| array_of_enum << item }
@@ -171,7 +171,7 @@ module Enumerable
   #
   # @raise [RuntimeError] if the Enumerable contains non-Numeric objects
   def require_numerics
-    unless all? { |item| item.class <= Numeric }
+    unless all? { |item| item.is_a? Numeric }
       calling_method = caller[0][/`.*'/][1..-2]
       raise RuntimeError, "Enumerable##{calling_method} requires that the Enumerable only contains Numeric objects."
     end

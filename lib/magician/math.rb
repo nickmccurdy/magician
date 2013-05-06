@@ -112,7 +112,7 @@ module Math
   #
   # @return [Boolean] true if the three numbers form a Pythagorean triplet
   def triplet?(a, b, c)
-    return false if [a, b, c].any? { |n| n < 1 or not n.class <= Integer }
+    return false if [a, b, c].any? { |n| n < 1 or not n.is_a? Integer }
 
     a**2 + b**2 == c**2
   end
