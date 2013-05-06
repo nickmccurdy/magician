@@ -127,11 +127,15 @@ describe Enumerable do
   end
 
   it 'should determine if it is a palindrome' do
+    [1, 2, 3, 2, 1].palindrome?.should be_true
+    (1..1).palindrome?.should be_true
     ''.palindrome?.should        be_true
     'a'.palindrome?.should       be_true
     'deed'.palindrome?.should    be_true
     'racecar'.palindrome?.should be_true
 
+    [1, 2, 3, 4, 5].palindrome?.should be_false
+    (1..5).palindrome?.should be_false
     'cats'.palindrome?.should be_false
     'no'.palindrome?.should   be_false
   end
