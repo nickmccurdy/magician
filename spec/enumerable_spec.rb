@@ -19,13 +19,13 @@ describe Enumerable do
     expect { ['string', 1].sum }.to raise_error RuntimeError
   end
 
-  it 'should calculate its product' do
-    [].product.should        == 1
-    [1].product.should       == 1
-    [5, 7, 2].product.should == 70
+  it 'should calculate its (numeric) product' do
+    [].numeric_product.should        == 1
+    [1].numeric_product.should       == 1
+    [5, 7, 2].numeric_product.should == 70
 
-    expect { ['string'].product }.to    raise_error RuntimeError
-    expect { ['string', 1].product }.to raise_error RuntimeError
+    expect { ['string'].numeric_product }.to    raise_error RuntimeError
+    expect { ['string', 1].numeric_product }.to raise_error RuntimeError
   end
 
   it 'should calculate its middle' do

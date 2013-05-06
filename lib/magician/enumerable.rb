@@ -23,14 +23,14 @@ module Enumerable
     empty? ? 0 : reduce(:+)
   end
 
-  # Gets the product of the Enumerable's elements. The product of an empty
-  # Enumerable is 1.  The Enumerable must only contain Numerics or a
+  # Gets the (numeric) product of the Enumerable's elements. The product of an
+  # empty Enumerable is 1. The Enumerable must only contain Numerics or a
   # RuntimeError will be raised.
   #
   # @return [Numeric] the product of the elements of the Enumerable
   #
   # @raise [RuntimeError] if the Enumerable contains non-Numeric objects
-  def product
+  def numeric_product
     require_numerics
 
     empty? ? 1 : reduce(:*)
