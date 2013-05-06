@@ -121,8 +121,7 @@ module Enumerable
   # original Enumerable
   def occurences
     occurences = Hash.new 0
-    # TODO each
-    each { |item| occurences[item] += 1 }
+    each_with_index { |item| occurences[item] += 1 }
     occurences
   end
 
