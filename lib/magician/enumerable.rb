@@ -38,7 +38,8 @@ module Enumerable
 
   # Finds the middle element of the Enumerable. If the Enumerable has an even
   # number of elements, the middle two elements will be averaged. The middle of
-  # an empty Enumerable is nil. The Enumerable must only contain Numerics or a
+  # an empty Enumerable is nil. Note that this method relies on a working to_a
+  # method for this Enumerable. The Enumerable must only contain Numerics or a
   # RuntimeError will be raised.
   #
   # @return [Numeric, nil] the middle of the elements of the Enumerable
@@ -48,8 +49,10 @@ module Enumerable
     require_numerics
     return nil if empty?
 
-    middle_index = length / 2
-    length.odd? ? slice(middle_index) : [slice(middle_index-1), slice(middle_index)].mean
+    array = to_a
+    middle_index = array.length / 2
+
+    length.odd? ? array[middle_index] : [array[middle_index-1], array[middle_index]].mean
   end
 
   # Gets the range of the elements of the Enumerable (maximum - minimum). The
