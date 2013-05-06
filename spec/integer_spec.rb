@@ -46,4 +46,12 @@ describe Integer do
     112233445566778899.pandigital?.should be_false
   end
 
+  it 'should determine if it is a palindrome' do
+    123454321.palindrome?.should be_true
+    1.palindrome?.should         be_true
+
+    123.palindrome?.should be_false
+    321.palindrome?.should be_false
+  end
+
 end

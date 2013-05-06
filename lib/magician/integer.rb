@@ -46,4 +46,13 @@ class Integer
     to_s.split(//).sort.join == '123456789'
   end
 
+  # Returns true if the Integer is a palindrome (meaning its digits are the same
+  # forward and backward).
+  #
+  # @return [Boolean] true if the Integer is a palindrome
+  def palindrome?
+    digits = to_s.split('')
+    digits.palindrome?
+  end
+
 end
