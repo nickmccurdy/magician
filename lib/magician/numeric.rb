@@ -9,18 +9,17 @@ class Numeric
   #
   # @return [Boolean] true if the number is evenly divisible by n
   def divisible? n
-    return false if n.zero?
-    (self % n).zero?
+    n.zero? ? false : modulo(n).zero?
   end
 
   # Performs to_s[selection].to_i on the number. Note that for floats, the
   # decimal counts as a digit within the string.
   #
   # @param [Range] selection the selection/range to get from the number (you can
-  # use anything that works with the [] syntax)
+  #   use anything that works with the [] syntax)
   #
   # @return [Integer] substring of the number (using []), converted to an
-  # Integer
+  #   Integer
   #
   # @deprecated Avoid using this any more. It's inaccurate and not very useful.
   def digits selection

@@ -3,20 +3,16 @@ class Integer
 
   # Gets all of the factors of the current integer. If the current integer is
   # negative, it will be treated as if it were positive (so the results will
-  # never contain negative integers). Returns nil if the integer is 0.
+  # never contain negative integers).
   #
   # @return [Array] an array of all of the factors of the current integer (in
-  # order, including 1 and the integer itself)
+  #   order, including 1 and the integer itself)
+  #
+  # @raise [ArgumentError] if the integer is 0, since 0 has infinite factors
   def factors
-    return nil if self == 0
-    return [1] if abs == 1
-    factors = [1]
-    2.upto((abs/2).to_i) do |i|
-      if abs%i == 0
-        factors << i
-      end
-    end
-    factors << abs
+    raise ArgumentError, '0 has infinite factors, so the Array of its factors cannot be computed in finite time' if zero?
+
+    1.upto(abs/2).select { |i| abs % i == 0 } << abs
   end
 
   # Gets the factorial of the integer, which is equivalent to the product of all
@@ -26,7 +22,8 @@ class Integer
   # @return [Integer] factorial of the integer
   def factorial
     return 1 if zero?
-    1.upto(self).reduce :*
+
+    downto(1).reduce :*
   end
 
   # Returns true if the integer is prime (that is, if it is not divisible by any
@@ -37,10 +34,8 @@ class Integer
   # @return [Boolean] true if the integer is prime
   def prime?
     return false if self <= 1
-    (2..Math.sqrt(self)).each do |i|
-      return false if self % i == 0
-    end
-    true
+
+    not 2.upto(Math.sqrt self).any? { |i| modulo(i) == 0 }
   end
 
   # Returns true if the integer is pandigital. That is, the integer contains
@@ -49,6 +44,15 @@ class Integer
   # @return [Boolean] true if the integer is pandigital
   def pandigital?
     to_s.split(//).sort.join == '123456789'
+  end
+
+  # Returns true if the Integer is a palindrome (meaning its digits are the same
+  # forward and backward).
+  #
+  # @return [Boolean] true if the Integer is a palindrome
+  def palindrome?
+    digits = to_s.split('')
+    digits.palindrome?
   end
 
 end
