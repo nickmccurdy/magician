@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Math do
 
-  it 'should solve quadratic formulas' do
+  it 'solves quadratic formulas' do
     Math.quadratic(1, 2, 1).should == [-1.0, -1.0]
     Math.quadratic(1, 1, 0).should == [-1.0, 0.0]
     Math.quadratic(1, 0, 0).should == [0.0, 0.0]
@@ -10,7 +10,7 @@ describe Math do
     expect { Math.quadratic(0, 1, 2) }.to raise_error ArgumentError
   end
 
-  it 'should calculate permutations of n and k' do
+  it 'calculates permutations of n and k' do
     Math.permutations(10, 5).should == 30_240
     Math.permutations(5, 5).should  == 120
     Math.permutations(5, 0).should  == 1
@@ -23,7 +23,7 @@ describe Math do
     expect { Math.permutations(-5, -5) }.to raise_error ArgumentError
   end
 
-  it 'should calculate combinations of n and k' do
+  it 'calculates combinations of n and k' do
     Math.combinations(10, 5).should == 252
     Math.combinations(5, 5).should  == 1
     Math.combinations(5, 0).should  == 1
@@ -36,7 +36,7 @@ describe Math do
     expect { Math.combinations(-5, -5) }.to raise_error ArgumentError
   end
 
-  it 'should calculate the number of steps to finish the Collatz conjecture' do
+  it 'calculates the number of steps to finish the Collatz conjecture' do
     Math.collatz(1).should   == 0
     Math.collatz(2).should   == 1
     Math.collatz(7).should   == 16
@@ -46,7 +46,7 @@ describe Math do
     expect { Math.collatz(0) }.to  raise_error ArgumentError
   end
 
-  it 'should calculate the lengths of hypotenuses' do
+  it 'calculates the lengths of hypotenuses' do
     Math.hypotenuse(0, 0).should            == 0
     Math.hypotenuse(Math.sqrt(5), 2).should == 3
     Math.hypotenuse(1, 1).should            == Math.sqrt(2)
@@ -54,7 +54,7 @@ describe Math do
     expect { Math.hypotenuse(5, -5) }.to raise_error ArgumentError
   end
 
-  it 'should determine if given numbers form Pythagorean triplets' do
+  it 'determines if given numbers form Pythagorean triplets' do
     Math.triplet?(3, 4, 5).should   be_true
     Math.triplet?(5, 12, 13).should be_true
     Math.triplet?(7, 24, 25).should be_true
@@ -68,7 +68,7 @@ describe Math do
     Math.triplet?(-1, -1, -1).should         be_false
   end
 
-  it 'should calculate series of Fibonacci numbers of specified lengths' do
+  it 'calculates series of Fibonacci numbers of specified lengths' do
     Math.fibs(0).should  == []
     Math.fibs(1).should  == [1]
     Math.fibs(2).should  == [1, 1]
@@ -83,7 +83,7 @@ describe Math do
     expect { Math.fibs(10, [9001]) }.to raise_error ArgumentError
   end
 
-  it 'should find all prime numbers up to different integers' do
+  it 'finds all prime numbers up to different integers' do
     Math.primes(0).should   == []
     Math.primes(1).should   == []
     Math.primes(2).should   == [2]
