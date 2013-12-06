@@ -120,9 +120,7 @@ module Enumerable
   # @return [Hash] a hash table of the occurrences of each item from the
   # original Enumerable
   def occurences
-    occurences = Hash.new 0
-    each_with_index { |item| occurences[item] += 1 }
-    occurences
+    each_with_object(Hash.new 0) { |item, occurences| occurences[item] += 1 }
   end
 
   # Returns true if the Enumerable is a palindrome (meaning it is the same

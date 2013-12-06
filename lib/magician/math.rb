@@ -165,8 +165,8 @@ module Math
       end
     end
 
-    # Create an array of prime integers by iterating over the array of booleans
-    1.upto(limit).reduce [] { |primes, i| is_prime[i] ? primes << i : primes }
+    # Create an array of prime integers
+    1.upto(limit).find_all { |i| is_prime[i] }
   end
 
 end
