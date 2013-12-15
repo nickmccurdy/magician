@@ -51,8 +51,7 @@ class Integer
   #
   # @return [Boolean] true if the Integer is a palindrome
   def palindrome?
-    digits = to_s.split('')
-    digits.palindrome?
+    to_s.split(//).palindrome?
   end
 
 end

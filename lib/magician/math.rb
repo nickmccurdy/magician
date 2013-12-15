@@ -78,12 +78,10 @@ module Math
 
     if n == 1
       depth
-    elsif n % 2 == 0
-      depth += 1
-      collatz(n/2, depth)
+    elsif n.divisible? 2
+      collatz(n/2, depth + 1)
     else
-      depth += 1
-      collatz(3*n + 1, depth)
+      collatz(3*n + 1, depth + 1)
     end
   end
 

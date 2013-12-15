@@ -109,7 +109,7 @@ module Enumerable
     occ = occurences
     max_occ = occ.values.max
 
-    occ.select { |key, value| value == max_occ }.keys
+    occ.select { |_, value| value == max_occ }.keys
   end
 
   # Gets a hash table with the number of occurrences of each item from the
@@ -130,12 +130,9 @@ module Enumerable
   #
   # @return [Boolean] true if the Enumerable is a palindrome
   def palindrome?
-    array_of_enum = []
-    if is_a? String
-      each_char { |item| array_of_enum << item }
-    else
-      each_with_index { |item| array_of_enum << item }
-    end
+    enumerator = is_a?(String) ? each_char : each
+
+    array_of_enum = enumerator.to_a
 
     array_of_enum == array_of_enum.reverse
   end
