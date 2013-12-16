@@ -35,7 +35,7 @@ class Integer
   def prime?
     return false if self <= 1
 
-    not 2.upto(Math.sqrt self).any? { |i| divisible? i }
+    2.upto(Math.sqrt self).none? { |i| divisible? i }
   end
 
   # Returns true if the integer is pandigital. That is, the integer contains

@@ -153,6 +153,11 @@ module Enumerable
     to_a.empty?
   end
 
+  def none?(&block)
+    block ||= lambda { |obj| obj }
+    not any? &block
+  end
+
   # Alias average to mean.
   alias :average :mean
 
