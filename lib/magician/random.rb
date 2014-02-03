@@ -17,7 +17,7 @@ class Random
   #
   # @return [String] 'heads' or 'tails'
   def coin
-    ['heads', 'tails'].sample random: self
+    %w{heads tails}.sample random: self
   end
 
   # Returns a random die roll (from 1-6).

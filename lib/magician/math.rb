@@ -1,9 +1,5 @@
 # Magician's extensions to the Math module.
 module Math
-
-  # If we don't do this, our new methods won't get added onto Math.
-  extend self
-
   # Solves a quadratic formula of the form "ax^2+bx+c=0" for x, where a is not
   # 0. It asks for the three coefficients of the function (a, b, and c), and
   # returns the two possible values for x. Complex number results are not
@@ -16,14 +12,14 @@ module Math
   # @return [Array] a sorted array of two Floats, the two possible values for x
   #
   # @raise [ArgumentError] if a is 0
-  def quadratic(a, b, c)
-    raise ArgumentError, 'a cannot be zero' if a.zero?
+  def self.quadratic(a, b, c)
+    fail ArgumentError, 'a cannot be zero' if a.zero?
 
     left = -b
-    right = Math.sqrt(b**2 - 4*a*c)
-    bottom = 2*a
+    right = Math.sqrt(b**2 - 4 * a * c)
+    bottom = 2 * a
 
-    [ (left+right)/bottom, (left-right)/bottom ].sort
+    [(left + right) / bottom, (left - right) / bottom].sort
   end
 
   # The number of size k ordered subsets of a set of size n. Equivalent to
@@ -35,12 +31,12 @@ module Math
   # @return [Integer] the number of permutations
   #
   # @raise [ArgumentError] if either argument is negative, or if n < k
-  def permutations(n, k)
-    raise ArgumentError, 'n cannot be negative' if n < 0
-    raise ArgumentError, 'k cannot be negative' if k < 0
-    raise ArgumentError, 'n must be at least as large as k' if n < k
+  def self.permutations(n, k)
+    fail ArgumentError, 'n cannot be negative' if n < 0
+    fail ArgumentError, 'k cannot be negative' if k < 0
+    fail ArgumentError, 'n must be at least as large as k' if n < k
 
-    n.factorial / (n-k).factorial
+    n.factorial / (n - k).factorial
   end
 
   # The number of size k unordered subsets of a set of size n. Equivalent to
@@ -52,12 +48,12 @@ module Math
   # @return [Integer] the number of combinations
   #
   # @raise [ArgumentError] if either argument is negative, or if n < k
-  def combinations(n, k)
-    raise ArgumentError, 'n cannot be negative' if n < 0
-    raise ArgumentError, 'k cannot be negative' if k < 0
-    raise ArgumentError, 'n must be at least as large as k' if n < k
+  def self.combinations(n, k)
+    fail ArgumentError, 'n cannot be negative' if n < 0
+    fail ArgumentError, 'k cannot be negative' if k < 0
+    fail ArgumentError, 'n must be at least as large as k' if n < k
 
-    n.factorial / (k.factorial * (n-k).factorial)
+    n.factorial / (k.factorial * (n - k).factorial)
   end
 
   # Get the number of steps it takes to get from integer n to 1 using the
@@ -73,15 +69,15 @@ module Math
   #   using the Collatz conjecture (the depth)
   #
   # @raise [ArgumentError] if n < 1
-  def collatz(n, depth=0)
-    raise ArgumentError, 'n must be at least 1' if n < 1
+  def self.collatz(n, depth = 0)
+    fail ArgumentError, 'n must be at least 1' if n < 1
 
     if n == 1
       depth
     elsif n.divisible? 2
-      collatz(n/2, depth + 1)
+      collatz(n / 2, depth + 1)
     else
-      collatz(3*n + 1, depth + 1)
+      collatz(3 * n + 1, depth + 1)
     end
   end
 
@@ -94,9 +90,9 @@ module Math
   # @return [Float] the length of the hypotenuse of the triangle
   #
   # @raise [ArgumentError] if either argument is negative
-  def hypotenuse(a, b)
-    raise ArgumentError, 'a cannot be negative' if a < 0
-    raise ArgumentError, 'b cannot be negative' if b < 0
+  def self.hypotenuse(a, b)
+    fail ArgumentError, 'a cannot be negative' if a < 0
+    fail ArgumentError, 'b cannot be negative' if b < 0
 
     Math.sqrt(a**2 + b**2)
   end
@@ -109,8 +105,8 @@ module Math
   # @param [Integer] c the length of the hypotenuse of the triangle
   #
   # @return [Boolean] true if the three numbers form a Pythagorean triplet
-  def triplet?(a, b, c)
-    return false if [a, b, c].any? { |n| n < 1 or not n.is_a? Integer }
+  def self.triplet?(a, b, c)
+    return false if [a, b, c].any? { |n| n < 1 || !n.is_a?(Integer) }
 
     a**2 + b**2 == c**2
   end
@@ -127,9 +123,9 @@ module Math
   #
   # @raise [ArgumentError] if a negative length is given, or if less than two
   #   terms are given
-  def fibs length, terms = [1, 1]
-    raise ArgumentError, 'Length must be at least 0' if length < 0
-    raise ArgumentError, 'At least two terms must be given' if terms.length < 2
+  def self.fibs(length, terms = [1, 1])
+    fail ArgumentError, 'Length must be at least 0' if length < 0
+    fail ArgumentError, 'At least two terms must be given' if terms.length < 2
 
     terms << (terms[-2] + terms[-1]) while terms.length < length
 
@@ -145,9 +141,9 @@ module Math
   #
   # @return [Array] an array of integers containing all discovered primes (in
   #   increasing order)
-  def primes limit
+  def self.primes(limit)
     # Initialize the array of booleans
-    is_prime = [true] * (limit+1)
+    is_prime = [true] * (limit + 1)
     is_prime[0] = false
     is_prime[1] = false
 
@@ -164,7 +160,6 @@ module Math
     end
 
     # Create an array of prime integers
-    1.upto(limit).find_all { |i| is_prime[i] }
+    1.upto(limit).select { |i| is_prime[i] }
   end
-
 end

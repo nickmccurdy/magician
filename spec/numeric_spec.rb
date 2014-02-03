@@ -27,7 +27,7 @@ describe Numeric do
     expect(180.to_radians).to eq PI
     expect(270.to_radians).to eq 3 * PI / 2
     expect(360.to_radians).to eq 2 * PI
-    expect(-90.to_radians).to eq -PI / 2
+    expect(-90.to_radians).to eq(-PI / 2)
   end
 
   it 'converts angles to degrees' do
@@ -36,7 +36,7 @@ describe Numeric do
     expect(PI.to_degrees).to           eq 180
     expect((3 * PI / 2).to_degrees).to eq 270
     expect((2 * PI).to_degrees).to     eq 360
-    expect((-PI / 2).to_degrees).to    eq -90
+    expect((-PI / 2).to_degrees).to    eq(-90)
   end
 
 end

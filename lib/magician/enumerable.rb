@@ -153,8 +153,8 @@ module Enumerable
   end
 
   def none?(&block)
-    block ||= lambda { |obj| obj }
-    not any? &block
+    block ||= -> obj { obj }
+    !any?(&block)
   end
 
   # Alias average to mean.
@@ -172,7 +172,7 @@ module Enumerable
   def require_numerics
     unless all? { |item| item.is_a? Numeric }
       calling_method = caller[0][/`.*'/][1..-2]
-      fail RuntimeError, "Enumerable##{calling_method} requires that the Enumerable only contains Numeric objects."
+      fail "Enumerable##{calling_method} requires that the Enumerable only contains Numeric objects."
     end
   end
 end
