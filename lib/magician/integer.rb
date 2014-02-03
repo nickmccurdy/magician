@@ -12,7 +12,7 @@ class Integer
   def factors
     raise ArgumentError, '0 has infinite factors, so the Array of its factors cannot be computed in finite time' if zero?
 
-    1.upto(abs/2).select { |i| abs % i == 0 } << abs
+    1.upto(abs/2).select { |i| abs.divisible? i } << abs
   end
 
   # Gets the factorial of the integer, which is equivalent to the product of all
@@ -35,7 +35,7 @@ class Integer
   def prime?
     return false if self <= 1
 
-    not 2.upto(Math.sqrt self).any? { |i| modulo(i) == 0 }
+    2.upto(Math.sqrt self).none? { |i| divisible? i }
   end
 
   # Returns true if the integer is pandigital. That is, the integer contains
@@ -44,6 +44,14 @@ class Integer
   # @return [Boolean] true if the integer is pandigital
   def pandigital?
     to_s.split(//).sort.join == '123456789'
+  end
+
+  # Returns true if the Integer is a palindrome (meaning its digits are the same
+  # forward and backward).
+  #
+  # @return [Boolean] true if the Integer is a palindrome
+  def palindrome?
+    to_s.split(//).palindrome?
   end
 
 end

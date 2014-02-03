@@ -78,12 +78,10 @@ module Math
 
     if n == 1
       depth
-    elsif n % 2 == 0
-      depth += 1
-      collatz(n/2, depth)
+    elsif n.divisible? 2
+      collatz(n/2, depth + 1)
     else
-      depth += 1
-      collatz(3*n + 1, depth)
+      collatz(3*n + 1, depth + 1)
     end
   end
 
@@ -112,7 +110,7 @@ module Math
   #
   # @return [Boolean] true if the three numbers form a Pythagorean triplet
   def triplet?(a, b, c)
-    return false if [a, b, c].any? { |n| n < 1 or not n.class <= Integer }
+    return false if [a, b, c].any? { |n| n < 1 or not n.is_a? Integer }
 
     a**2 + b**2 == c**2
   end
@@ -165,8 +163,8 @@ module Math
       end
     end
 
-    # Create an array of prime integers by iterating over the array of booleans
-    1.upto(limit).reduce [] { |primes, i| is_prime[i] ? primes << i : primes }
+    # Create an array of prime integers
+    1.upto(limit).find_all { |i| is_prime[i] }
   end
 
 end
