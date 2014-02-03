@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Shortcuts' do
 
-  it 'should properly alias certain values from Math' do
+  it 'properly aliases certain values from Math' do
     PI.should           == Math::PI
     E.should            == Math::E
     I.should            == Complex::I

@@ -109,7 +109,7 @@ module Enumerable
     occ = occurences
     max_occ = occ.values.max
 
-    occ.select { |key, value| value == max_occ }.keys
+    occ.select { |_, value| value == max_occ }.keys
   end
 
   # Gets a hash table with the number of occurrences of each item from the
@@ -120,9 +120,7 @@ module Enumerable
   # @return [Hash] a hash table of the occurrences of each item from the
   # original Enumerable
   def occurences
-    occurences = Hash.new 0
-    each_with_index { |item| occurences[item] += 1 }
-    occurences
+    each_with_object(Hash.new 0) { |item, occurences| occurences[item] += 1 }
   end
 
   # Returns true if the Enumerable is a palindrome (meaning it is the same
@@ -132,12 +130,9 @@ module Enumerable
   #
   # @return [Boolean] true if the Enumerable is a palindrome
   def palindrome?
-    array_of_enum = []
-    if is_a? String
-      each_char { |item| array_of_enum << item }
-    else
-      each_with_index { |item| array_of_enum << item }
-    end
+    enumerator = is_a?(String) ? each_char : each
+
+    array_of_enum = enumerator.to_a
 
     array_of_enum == array_of_enum.reverse
   end
@@ -156,6 +151,11 @@ module Enumerable
   # @return [Boolean] true if the Enumerable is empty
   def empty?
     to_a.empty?
+  end
+
+  def none?(&block)
+    block ||= lambda { |obj| obj }
+    not any? &block
   end
 
   # Alias average to mean.
