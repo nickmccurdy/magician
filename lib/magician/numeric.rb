@@ -1,6 +1,5 @@
 # Magician's extensions to the Numeric class (affects Integers and Floats).
 class Numeric
-
   # Returns true if the number is evenly divisible by n. If n is equal to 0, it
   # returns false, since numbers cannot be divided by 0 in real number
   # arithmetic.
@@ -8,7 +7,7 @@ class Numeric
   # @param [Numeric] n the number that this number (self) should be divided by
   #
   # @return [Boolean] true if the number is evenly divisible by n
-  def divisible? n
+  def divisible?(n)
     not n.zero? and modulo(n).zero?
   end
 
@@ -22,7 +21,7 @@ class Numeric
   #   Integer
   #
   # @deprecated Avoid using this any more. It's inaccurate and not very useful.
-  def digits selection
+  def digits(selection)
     to_s[selection].to_i
   end
 
@@ -39,5 +38,4 @@ class Numeric
   def to_degrees
     self * 180 / Math::PI
   end
-
 end

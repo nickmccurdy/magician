@@ -87,9 +87,9 @@ describe Math do
     expect(Math.primes(0)).to   eq []
     expect(Math.primes(1)).to   eq []
     expect(Math.primes(2)).to   eq [2]
-    expect(Math.primes(5)).to   eq [2,3,5]
-    expect(Math.primes(10)).to  eq [2,3,5,7]
-    expect(Math.primes(100)).to eq [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
+    expect(Math.primes(5)).to   eq [2, 3, 5]
+    expect(Math.primes(10)).to  eq [2, 3, 5, 7]
+    expect(Math.primes(100)).to eq [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
   end
 
 end

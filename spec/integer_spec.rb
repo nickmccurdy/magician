@@ -36,19 +36,19 @@ describe Integer do
   end
 
   it 'determines if it is pandigital' do
-    expect(123456789.pandigital?).to be true
-    expect(987654321.pandigital?).to be true
-    expect(192837465.pandigital?).to be true
+    expect(123_456_789.pandigital?).to be true
+    expect(987_654_321.pandigital?).to be true
+    expect(192_837_465.pandigital?).to be true
 
-    expect(12345.pandigital?).to              be false
-    expect(1234567890.pandigital?).to         be false
-    expect(1234567899.pandigital?).to         be false
-    expect(112233445566778899.pandigital?).to be false
+    expect(12_345.pandigital?).to                  be false
+    expect(1_234_567_890.pandigital?).to           be false
+    expect(1_234_567_899.pandigital?).to           be false
+    expect(112_233_445_566_778_899.pandigital?).to be false
   end
 
   it 'determines if it is a palindrome' do
-    expect(123454321.palindrome?).to be true
-    expect(1.palindrome?).to         be true
+    expect(123_454_321.palindrome?).to be true
+    expect(1.palindrome?).to           be true
 
     expect(123.palindrome?).to be false
     expect(321.palindrome?).to be false

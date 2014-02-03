@@ -25,7 +25,7 @@ describe Enumerable do
     expect([].numeric_product).to        eq 1
     expect([1].numeric_product).to       eq 1
     expect([5, 7, 2].numeric_product).to eq 70
-    expect((1..10).numeric_product).to   eq 3628800
+    expect((1..10).numeric_product).to   eq 3_628_800
 
     expect { ['string'].numeric_product }.to    raise_error RuntimeError
     expect { ['string', 1].numeric_product }.to raise_error RuntimeError
@@ -77,7 +77,7 @@ describe Enumerable do
     expect([].mode).to            eq nil
     expect(['string'].mode).to    eq ['string']
     expect([4].mode).to           eq [4]
-    expect(['string', 4].mode).to eq ['string',4]
+    expect(['string', 4].mode).to eq ['string', 4]
     expect((1..5).mode).to        eq [1, 2, 3, 4, 5]
 
     expect([1, 2, 1, 3, 1, 4].mode).to    eq [1]
@@ -86,12 +86,12 @@ describe Enumerable do
 
   it 'calculates a hash holding numbers of occurrences of its items' do
     expect([].occurences).to            eq({})
-    expect(['string'].occurences).to    eq({ 'string'=>1 })
-    expect([4].occurences).to           eq({ 4=>1 })
-    expect(['string', 4].occurences).to eq({ 'string'=>1, 4=>1 })
-    expect((1..3).occurences).to        eq({ 1=>1, 2=>1, 3=>1 })
+    expect(['string'].occurences).to    eq('string' => 1)
+    expect([4].occurences).to           eq(4 => 1)
+    expect(['string', 4].occurences).to eq('string' => 1, 4 => 1)
+    expect((1..3).occurences).to        eq(1 => 1, 2 => 1, 3 => 1)
 
-    expect([1, 2, 2, 5].occurences).to eq({ 1=>1, 2=>2, 5=>1 })
+    expect([1, 2, 2, 5].occurences).to eq(1 => 1, 2 => 2, 5 => 1)
   end
 
   it 'calculates its length' do

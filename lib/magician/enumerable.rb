@@ -1,6 +1,5 @@
 # Magician's extensions to the Enumerable module.
 module Enumerable
-
   # Returns all numbers from the Enumerable, in their original order. This is
   # done by choosing all objects from the Enumerable that are instances of
   # Numeric or one of its subclasses.
@@ -52,7 +51,7 @@ module Enumerable
     array = to_a
     middle_index = array.length / 2
 
-    length.odd? ? array[middle_index] : [array[middle_index-1], array[middle_index]].mean
+    length.odd? ? array[middle_index] : [array[middle_index - 1], array[middle_index]].mean
   end
 
   # Gets the range of the elements of the Enumerable (maximum - minimum). The
@@ -159,10 +158,10 @@ module Enumerable
   end
 
   # Alias average to mean.
-  alias :average :mean
+  alias_method :average, :mean
 
   # Alias size to length.
-  alias :size :length
+  alias_method :size, :length
 
   private
 
@@ -173,10 +172,9 @@ module Enumerable
   def require_numerics
     unless all? { |item| item.is_a? Numeric }
       calling_method = caller[0][/`.*'/][1..-2]
-      raise RuntimeError, "Enumerable##{calling_method} requires that the Enumerable only contains Numeric objects."
+      fail RuntimeError, "Enumerable##{calling_method} requires that the Enumerable only contains Numeric objects."
     end
   end
-
 end
 
 # String objects do not properly inherit these new methods for Enumerable. As a

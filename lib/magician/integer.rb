@@ -1,6 +1,5 @@
 # Magician's extensions to the Integer class.
 class Integer
-
   # Gets all of the factors of the current integer. If the current integer is
   # negative, it will be treated as if it were positive (so the results will
   # never contain negative integers).
@@ -10,9 +9,9 @@ class Integer
   #
   # @raise [ArgumentError] if the integer is 0, since 0 has infinite factors
   def factors
-    raise ArgumentError, '0 has infinite factors, so the Array of its factors cannot be computed in finite time' if zero?
+    fail ArgumentError, '0 has infinite factors, so the Array of its factors cannot be computed in finite time' if zero?
 
-    1.upto(abs/2).select { |i| abs.divisible? i } << abs
+    1.upto(abs / 2).select { |i| abs.divisible? i } << abs
   end
 
   # Gets the factorial of the integer, which is equivalent to the product of all
@@ -53,5 +52,4 @@ class Integer
   def palindrome?
     to_s.split(//).palindrome?
   end
-
 end
