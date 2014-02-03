@@ -81,12 +81,10 @@ module Math
 
     if n == 1
       depth
-    elsif n % 2 == 0
-      depth += 1
-      collatz(n/2, depth)
+    elsif n.divisible? 2
+      collatz(n/2, depth + 1)
     else
-      depth += 1
-      collatz(3*n + 1, depth)
+      collatz(3*n + 1, depth + 1)
     end
   end
 
@@ -168,8 +166,8 @@ module Math
       end
     end
 
-    # Create an array of prime integers by iterating over the array of booleans
-    1.upto(limit).reduce [] { |primes, i| is_prime[i] ? primes << i : primes }
+    # Create an array of prime integers
+    1.upto(limit).find_all { |i| is_prime[i] }
   end
 
 end
