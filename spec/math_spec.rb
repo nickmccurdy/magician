@@ -55,17 +55,17 @@ describe Math do
   end
 
   it 'determines if given numbers form Pythagorean triplets' do
-    expect(Math.triplet?(3, 4, 5)).to   be_true
-    expect(Math.triplet?(5, 12, 13)).to be_true
-    expect(Math.triplet?(7, 24, 25)).to be_true
-    expect(Math.triplet?(8, 15, 17)).to be_true
-    expect(Math.triplet?(4, 3, 5)).to   be_true
+    expect(Math.triplet?(3, 4, 5)).to   be true
+    expect(Math.triplet?(5, 12, 13)).to be true
+    expect(Math.triplet?(7, 24, 25)).to be true
+    expect(Math.triplet?(8, 15, 17)).to be true
+    expect(Math.triplet?(4, 3, 5)).to   be true
 
-    expect(Math.triplet?(5, 4, 3)).to            be_false
-    expect(Math.triplet?(0, 0, 0)).to            be_false
-    expect(Math.triplet?(Math.sqrt(5), 2, 3)).to be_false
-    expect(Math.triplet?(1, 1, Math.sqrt(2))).to be_false
-    expect(Math.triplet?(-1, -1, -1)).to         be_false
+    expect(Math.triplet?(5, 4, 3)).to            be false
+    expect(Math.triplet?(0, 0, 0)).to            be false
+    expect(Math.triplet?(Math.sqrt(5), 2, 3)).to be false
+    expect(Math.triplet?(1, 1, Math.sqrt(2))).to be false
+    expect(Math.triplet?(-1, -1, -1)).to         be false
   end
 
   it 'calculates series of Fibonacci numbers of specified lengths' do

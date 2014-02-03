@@ -3,16 +3,16 @@ require 'spec_helper'
 describe Numeric do
 
   it 'determines if it is divisible by another number' do
-    expect(0.divisible?(5)).to      be_true
-    expect(1.divisible?(6)).to      be_false
-    expect(-1.divisible?(1)).to     be_true
-    expect(12.divisible?(6)).to     be_true
-    expect(6.divisible?(5)).to      be_false
-    expect(10.divisible?(0)).to     be_false
-    expect(9.divisible?(1.5)).to    be_true
-    expect(9.0.divisible?(1.5)).to  be_true
-    expect(10.5.divisible?(1.5)).to be_true
-    expect(10.5.divisible?(1)).to   be_false
+    expect(0.divisible?(5)).to      be true
+    expect(1.divisible?(6)).to      be false
+    expect(-1.divisible?(1)).to     be true
+    expect(12.divisible?(6)).to     be true
+    expect(6.divisible?(5)).to      be false
+    expect(10.divisible?(0)).to     be false
+    expect(9.divisible?(1.5)).to    be true
+    expect(9.0.divisible?(1.5)).to  be true
+    expect(10.5.divisible?(1.5)).to be true
+    expect(10.5.divisible?(1)).to   be false
   end
 
   it 'grabs specific digits from different numbers' do

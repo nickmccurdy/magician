@@ -103,11 +103,11 @@ describe Enumerable do
   end
 
   it 'determines if it is empty' do
-    expect([].empty?).to      be_true
-    expect((2..1).empty?).to  be_true
+    expect([].empty?).to      be true
+    expect((2..1).empty?).to  be true
 
-    expect([1, 2].empty?).to  be_false
-    expect((1..10).empty?).to be_false
+    expect([1, 2].empty?).to  be false
+    expect((1..10).empty?).to be false
   end
 
   it 'lets Enumerable#average be used as an alias to Enumerable#mean' do
@@ -121,17 +121,17 @@ describe Enumerable do
   end
 
   it 'determines if it is a palindrome' do
-    expect([1, 2, 3, 2, 1].palindrome?).to be_true
-    expect((1..1).palindrome?).to be_true
-    expect(''.palindrome?).to        be_true
-    expect('a'.palindrome?).to       be_true
-    expect('deed'.palindrome?).to    be_true
-    expect('racecar'.palindrome?).to be_true
+    expect([1, 2, 3, 2, 1].palindrome?).to be true
+    expect((1..1).palindrome?).to be true
+    expect(''.palindrome?).to        be true
+    expect('a'.palindrome?).to       be true
+    expect('deed'.palindrome?).to    be true
+    expect('racecar'.palindrome?).to be true
 
-    expect([1, 2, 3, 4, 5].palindrome?).to be_false
-    expect((1..5).palindrome?).to be_false
-    expect('cats'.palindrome?).to be_false
-    expect('no'.palindrome?).to   be_false
+    expect([1, 2, 3, 4, 5].palindrome?).to be false
+    expect((1..5).palindrome?).to be false
+    expect('cats'.palindrome?).to be false
+    expect('no'.palindrome?).to   be false
   end
 
 end
