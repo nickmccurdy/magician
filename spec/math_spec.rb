@@ -3,18 +3,18 @@ require 'spec_helper'
 describe Math do
 
   it 'solves quadratic formulas' do
-    Math.quadratic(1, 2, 1).should == [-1.0, -1.0]
-    Math.quadratic(1, 1, 0).should == [-1.0, 0.0]
-    Math.quadratic(1, 0, 0).should == [0.0, 0.0]
+    expect(Math.quadratic(1, 2, 1)).to eq [-1.0, -1.0]
+    expect(Math.quadratic(1, 1, 0)).to eq [-1.0, 0.0]
+    expect(Math.quadratic(1, 0, 0)).to eq [0.0, 0.0]
 
     expect { Math.quadratic(0, 1, 2) }.to raise_error ArgumentError
   end
 
   it 'calculates permutations of n and k' do
-    Math.permutations(10, 5).should == 30_240
-    Math.permutations(5, 5).should  == 120
-    Math.permutations(5, 0).should  == 1
-    Math.permutations(0, 0).should  == 1
+    expect(Math.permutations(10, 5)).to eq 30_240
+    expect(Math.permutations(5, 5)).to  eq 120
+    expect(Math.permutations(5, 0)).to  eq 1
+    expect(Math.permutations(0, 0)).to  eq 1
 
     expect { Math.permutations(0, 5) }.to   raise_error ArgumentError
     expect { Math.permutations(5, 10) }.to  raise_error ArgumentError
@@ -24,10 +24,10 @@ describe Math do
   end
 
   it 'calculates combinations of n and k' do
-    Math.combinations(10, 5).should == 252
-    Math.combinations(5, 5).should  == 1
-    Math.combinations(5, 0).should  == 1
-    Math.combinations(0, 0).should  == 1
+    expect(Math.combinations(10, 5)).to eq 252
+    expect(Math.combinations(5, 5)).to  eq 1
+    expect(Math.combinations(5, 0)).to  eq 1
+    expect(Math.combinations(0, 0)).to  eq 1
 
     expect { Math.combinations(5, 10) }.to  raise_error ArgumentError
     expect { Math.combinations(0, 5) }.to   raise_error ArgumentError
@@ -37,46 +37,46 @@ describe Math do
   end
 
   it 'calculates the number of steps to finish the Collatz conjecture' do
-    Math.collatz(1).should   == 0
-    Math.collatz(2).should   == 1
-    Math.collatz(7).should   == 16
-    Math.collatz(100).should == 25
+    expect(Math.collatz(1)).to   eq 0
+    expect(Math.collatz(2)).to   eq 1
+    expect(Math.collatz(7)).to   eq 16
+    expect(Math.collatz(100)).to eq 25
 
     expect { Math.collatz(-1) }.to raise_error ArgumentError
     expect { Math.collatz(0) }.to  raise_error ArgumentError
   end
 
   it 'calculates the lengths of hypotenuses' do
-    Math.hypotenuse(0, 0).should            == 0
-    Math.hypotenuse(Math.sqrt(5), 2).should == 3
-    Math.hypotenuse(1, 1).should            == Math.sqrt(2)
+    expect(Math.hypotenuse(0, 0)).to            eq 0
+    expect(Math.hypotenuse(Math.sqrt(5), 2)).to eq 3
+    expect(Math.hypotenuse(1, 1)).to            eq Math.sqrt(2)
 
     expect { Math.hypotenuse(5, -5) }.to raise_error ArgumentError
   end
 
   it 'determines if given numbers form Pythagorean triplets' do
-    Math.triplet?(3, 4, 5).should   be_true
-    Math.triplet?(5, 12, 13).should be_true
-    Math.triplet?(7, 24, 25).should be_true
-    Math.triplet?(8, 15, 17).should be_true
-    Math.triplet?(4, 3, 5).should   be_true
+    expect(Math.triplet?(3, 4, 5)).to   be_true
+    expect(Math.triplet?(5, 12, 13)).to be_true
+    expect(Math.triplet?(7, 24, 25)).to be_true
+    expect(Math.triplet?(8, 15, 17)).to be_true
+    expect(Math.triplet?(4, 3, 5)).to   be_true
 
-    Math.triplet?(5, 4, 3).should            be_false
-    Math.triplet?(0, 0, 0).should            be_false
-    Math.triplet?(Math.sqrt(5), 2, 3).should be_false
-    Math.triplet?(1, 1, Math.sqrt(2)).should be_false
-    Math.triplet?(-1, -1, -1).should         be_false
+    expect(Math.triplet?(5, 4, 3)).to            be_false
+    expect(Math.triplet?(0, 0, 0)).to            be_false
+    expect(Math.triplet?(Math.sqrt(5), 2, 3)).to be_false
+    expect(Math.triplet?(1, 1, Math.sqrt(2))).to be_false
+    expect(Math.triplet?(-1, -1, -1)).to         be_false
   end
 
   it 'calculates series of Fibonacci numbers of specified lengths' do
-    Math.fibs(0).should  == []
-    Math.fibs(1).should  == [1]
-    Math.fibs(2).should  == [1, 1]
-    Math.fibs(5).should  == [1, 1, 2, 3, 5]
-    Math.fibs(10).should == [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+    expect(Math.fibs(0)).to  eq []
+    expect(Math.fibs(1)).to  eq [1]
+    expect(Math.fibs(2)).to  eq [1, 1]
+    expect(Math.fibs(5)).to  eq [1, 1, 2, 3, 5]
+    expect(Math.fibs(10)).to eq [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 
-    Math.fibs(10, [5, 10]).should  == [5, 10, 15, 25, 40, 65, 105, 170, 275, 445]
-    Math.fibs(1, [1, 2, 3]).should == [1]
+    expect(Math.fibs(10, [5, 10])).to  eq [5, 10, 15, 25, 40, 65, 105, 170, 275, 445]
+    expect(Math.fibs(1, [1, 2, 3])).to eq [1]
 
     expect { Math.fibs(-1) }.to         raise_error ArgumentError
     expect { Math.fibs(10, []) }.to     raise_error ArgumentError
@@ -84,12 +84,12 @@ describe Math do
   end
 
   it 'finds all prime numbers up to different integers' do
-    Math.primes(0).should   == []
-    Math.primes(1).should   == []
-    Math.primes(2).should   == [2]
-    Math.primes(5).should   == [2,3,5]
-    Math.primes(10).should  == [2,3,5,7]
-    Math.primes(100).should == [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
+    expect(Math.primes(0)).to   eq []
+    expect(Math.primes(1)).to   eq []
+    expect(Math.primes(2)).to   eq [2]
+    expect(Math.primes(5)).to   eq [2,3,5]
+    expect(Math.primes(10)).to  eq [2,3,5,7]
+    expect(Math.primes(100)).to eq [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
   end
 
 end

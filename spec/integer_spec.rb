@@ -3,55 +3,55 @@ require 'spec_helper'
 describe Integer do
 
   it 'calculates its factors' do
-    1.factors.should == [1]
-    6.factors.should == [1, 2, 3, 6]
-    7.factors.should == [1, 7]
+    expect(1.factors).to eq [1]
+    expect(6.factors).to eq [1, 2, 3, 6]
+    expect(7.factors).to eq [1, 7]
 
-    -1.factors.should == [1]
-    -6.factors.should == [1, 2, 3, 6]
-    -7.factors.should == [1, 7]
+    expect(-1.factors).to eq [1]
+    expect(-6.factors).to eq [1, 2, 3, 6]
+    expect(-7.factors).to eq [1, 7]
 
     expect { 0.factors }.to raise_error ArgumentError
   end
 
   it 'calculates its factorial' do
-    0.factorial.should  == 1
-    1.factorial.should  == 1
-    -1.factorial.should == nil
-    5.factorial.should  == 120
-    10.factorial.should == 3_628_800
+    expect(0.factorial).to  eq 1
+    expect(1.factorial).to  eq 1
+    expect(-1.factorial).to eq nil
+    expect(5.factorial).to  eq 120
+    expect(10.factorial).to eq 3_628_800
   end
 
   it 'determines if it is prime' do
-    0.prime?.should be_false
-    1.prime?.should be_false
-    2.prime?.should be_true
-    5.prime?.should be_true
-    6.prime?.should be_false
+    expect(0.prime?).to be_false
+    expect(1.prime?).to be_false
+    expect(2.prime?).to be_true
+    expect(5.prime?).to be_true
+    expect(6.prime?).to be_false
 
-    -1.prime?.should be_false
-    -2.prime?.should be_false
-    -5.prime?.should be_false
-    -6.prime?.should be_false
+    expect(-1.prime?).to be_false
+    expect(-2.prime?).to be_false
+    expect(-5.prime?).to be_false
+    expect(-6.prime?).to be_false
   end
 
   it 'determines if it is pandigital' do
-    123456789.pandigital?.should be_true
-    987654321.pandigital?.should be_true
-    192837465.pandigital?.should be_true
+    expect(123456789.pandigital?).to be_true
+    expect(987654321.pandigital?).to be_true
+    expect(192837465.pandigital?).to be_true
 
-    12345.pandigital?.should              be_false
-    1234567890.pandigital?.should         be_false
-    1234567899.pandigital?.should         be_false
-    112233445566778899.pandigital?.should be_false
+    expect(12345.pandigital?).to              be_false
+    expect(1234567890.pandigital?).to         be_false
+    expect(1234567899.pandigital?).to         be_false
+    expect(112233445566778899.pandigital?).to be_false
   end
 
   it 'determines if it is a palindrome' do
-    123454321.palindrome?.should be_true
-    1.palindrome?.should         be_true
+    expect(123454321.palindrome?).to be_true
+    expect(1.palindrome?).to         be_true
 
-    123.palindrome?.should be_false
-    321.palindrome?.should be_false
+    expect(123.palindrome?).to be_false
+    expect(321.palindrome?).to be_false
   end
 
 end

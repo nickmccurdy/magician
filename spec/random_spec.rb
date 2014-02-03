@@ -7,15 +7,15 @@ describe Random do
   end
 
   it 'gets a random boolean' do
-    5.times { [true, false].should include @r.boolean }
+    5.times { expect([true, false]).to include @r.boolean }
   end
 
   it 'gets a random coin toss' do
-    5.times { ['heads', 'tails'].should include @r.coin }
+    5.times { expect(['heads', 'tails']).to include @r.coin }
   end
 
   it 'gets a random die roll' do
-    5.times { (1..6).should include @r.die }
+    5.times { expect(1..6).to include @r.die }
   end
 
 end

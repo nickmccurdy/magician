@@ -3,40 +3,40 @@ require 'spec_helper'
 describe Numeric do
 
   it 'determines if it is divisible by another number' do
-    0.divisible?(5).should      be_true
-    1.divisible?(6).should      be_false
-    -1.divisible?(1).should     be_true
-    12.divisible?(6).should     be_true
-    6.divisible?(5).should      be_false
-    10.divisible?(0).should     be_false
-    9.divisible?(1.5).should    be_true
-    9.0.divisible?(1.5).should  be_true
-    10.5.divisible?(1.5).should be_true
-    10.5.divisible?(1).should   be_false
+    expect(0.divisible?(5)).to      be_true
+    expect(1.divisible?(6)).to      be_false
+    expect(-1.divisible?(1)).to     be_true
+    expect(12.divisible?(6)).to     be_true
+    expect(6.divisible?(5)).to      be_false
+    expect(10.divisible?(0)).to     be_false
+    expect(9.divisible?(1.5)).to    be_true
+    expect(9.0.divisible?(1.5)).to  be_true
+    expect(10.5.divisible?(1.5)).to be_true
+    expect(10.5.divisible?(1)).to   be_false
   end
 
   it 'grabs specific digits from different numbers' do
-    Math::PI.digits(0..-1).should == 3
-    12345.digits(0..2).should     == 123
-    12345.digits(4).should        == 5
+    expect(Math::PI.digits(0..-1)).to eq 3
+    expect(12345.digits(0..2)).to     eq 123
+    expect(12345.digits(4)).to        eq 5
   end
 
   it 'converts angles to radians' do
-    0.to_radians.should   == 0
-    90.to_radians.should  == PI/2
-    180.to_radians.should == PI
-    270.to_radians.should == 3*PI/2
-    360.to_radians.should == 2*PI
-    -90.to_radians.should == -PI/2
+    expect(0.to_radians).to   eq 0
+    expect(90.to_radians).to  eq PI/2
+    expect(180.to_radians).to eq PI
+    expect(270.to_radians).to eq 3*PI/2
+    expect(360.to_radians).to eq 2*PI
+    expect(-90.to_radians).to eq -PI/2
   end
 
   it 'converts angles to degrees' do
-    0.to_degrees.should        == 0
-    (PI/2).to_degrees.should   == 90
-    PI.to_degrees.should       == 180
-    (3*PI/2).to_degrees.should == 270
-    (2*PI).to_degrees.should   == 360
-    (-PI/2).to_degrees.should  == -90
+    expect(0.to_degrees).to        eq 0
+    expect((PI/2).to_degrees).to   eq 90
+    expect(PI.to_degrees).to       eq 180
+    expect((3*PI/2).to_degrees).to eq 270
+    expect((2*PI).to_degrees).to   eq 360
+    expect((-PI/2).to_degrees).to  eq -90
   end
 
 end
