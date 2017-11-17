@@ -1,3 +1,6 @@
+# Deprecated
+Use a more complete and well supported math system like [Octave](https://www.gnu.org/software/octave/), which is compatible with [MATLAB](https://www.mathworks.com/products/matlab.html).
+
 # Magician
 [![Gem Version](https://badge.fury.io/rb/magician.png)](http://badge.fury.io/rb/magician)
 [![Build Status](https://secure.travis-ci.org/nicolasmccurdy/magician.png?branch=master)](http://travis-ci.org/nicolasmccurdy/magician)
